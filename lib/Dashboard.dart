@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(width: 10),
                 Text(
-                  'Full Names',
+                  'Clorinde',
                   style: TextStyle(color: Colors.white),
                 ),
               ],
