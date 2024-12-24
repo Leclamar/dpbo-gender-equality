@@ -73,12 +73,20 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 16),
             Section(
               title: 'Rekomendasi',
-              items: ['Belajar Flutter', 'Tips Coding', 'Panduan UI/UX'],
+              items: [
+                'Kesetaraan',
+                'Tren Microfeminism di TikTok',
+                'Faktor Ekonomi Jadi Penyebab Kekerasan',
+                'Ratusan Perda Diskriminatif Terhadap Gender',
+                'Indonesia Dukung Penerbitan Orange Bonds untuk Kesetaraan Gender',
+                'Kesetaraan Gender Pendorong Pertumbuhan Ekonomi yang Inklusif',
+                'Mahasiswa ITS Perjuangkan Kesetaraan Gender di Forum PBB'
+              ],
               onItemTap: (index) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ArticleDetailScreen(title: ['Belajar Flutter', 'Tips Coding', 'Panduan UI/UX'][index]),
+                    builder: (context) => ArticleDetailScreen(title: index),
                   ),
                 );
               },
@@ -86,12 +94,19 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 16),
             Section(
               title: 'Tahukah Kamu?',
-              items: ['Fakta Teknologi', 'Tips Hidup Sehat', 'Sejarah Internet'],
+              items: [
+                'Peringatan Hari Ibu ke-96 Tahun 2024',
+                'Kementerian PANRB Dukung Penguatan Peran Perempuan dalam Pemerintahan',
+                'Iwapi Bali Tekankan Pentingnya Peran Ibu',
+                'Menteri Arifah Apresiasi Komitmen Polri Lindungi Perempuan dan Anak',
+                'Dampak Krisis Iklim',
+                'Fenomena Laki-Laki tidak Bercerita'
+              ],
               onItemTap: (index) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ArticleDetailScreen(title: ['Fakta Teknologi', 'Tips Hidup Sehat', 'Sejarah Internet'][index]),
+                    builder: (context) => ArticleDetailScreen(title: index),
                   ),
                 );
               },
@@ -99,12 +114,19 @@ class HomeScreen extends StatelessWidget {
             SizedBox(height: 16),
             Section(
               title: 'Berita Terbaru',
-              items: ['Perkembangan AI', 'Update Flutter', 'Tren Teknologi 2024'],
+              items: [
+                'Korea Selatan Hadapi Isu Kesetaraan Gender',
+                'Kesetaraan Gender Menuju Indonesia Emas',
+                'Perempuan dalam Pemerintahan',
+                'Lamongan Perluas Ruang Gender Equality',
+                'Penguatan Pendidikan Politik Berbasis Gender',
+                'Peran Ibu sebagai Penggerak Perubahan'
+              ],
               onItemTap: (index) {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ArticleDetailScreen(title: ['Perkembangan AI', 'Update Flutter', 'Tren Teknologi 2024'][index]),
+                    builder: (context) => ArticleDetailScreen(title: index),
                   ),
                 );
               },
@@ -142,7 +164,7 @@ class CategoryButton extends StatelessWidget {
 class Section extends StatelessWidget {
   final String title;
   final List<String> items;
-  final void Function(int)? onItemTap;
+  final void Function(String)? onItemTap;
 
   Section({required this.title, required this.items, this.onItemTap});
 
@@ -153,6 +175,8 @@ class Section extends StatelessWidget {
       children: [
         Text(
           title,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
           style: TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
@@ -163,15 +187,12 @@ class Section extends StatelessWidget {
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            children: items.asMap().entries.map((entry) {
-              int index = entry.key;
-              String label = entry.value;
-
+            children: items.map((label) {
               return ItemCard(
                 label: label,
                 onTap: () {
                   if (onItemTap != null) {
-                    onItemTap!(index);
+                    onItemTap!(label);
                   }
                 },
               );
@@ -215,6 +236,8 @@ class ItemCard extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Text(
                 label,
+                overflow: TextOverflow.ellipsis,
+                maxLines: 1,
                 style: TextStyle(fontSize: 14, color: Colors.black),
               ),
             ),

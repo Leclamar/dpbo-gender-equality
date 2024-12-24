@@ -117,7 +117,7 @@ class MessagesPage extends StatelessWidget {
                   child: MessageTile(
                     imageUrl: 'assets/avatar3.png',
                     name: "Dr. Emily",
-                    message: "Selamat pagi!",
+                    message: "Halo, ada yang bisa saya bantu?",
                   ),
                 ),
               ],
